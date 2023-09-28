@@ -1,0 +1,75 @@
+Usage: ./sieve3_openmp T M
+
+  T: number of threads
+  M: max prime
+Threads: 1, MAX: 1
+Finished in 7.873e-06 seconds (wall clock).
+Threads: 1, MAX: 10
+Finished in 1.0125e-05 seconds (wall clock).
+Threads: 1, MAX: 100
+Finished in 4.3058e-05 seconds (wall clock).
+Threads: 1, MAX: 1000
+Finished in 0.000630089 seconds (wall clock).
+Threads: 1, MAX: 10000
+Finished in 0.0963154 seconds (wall clock).
+Threads: 1, MAX: 1000000
+Usage: ./sieve3_openmp T M
+
+  T: number of threads
+  M: max prime
+Threads: 10, MAX: 1
+Finished in 0.00122532 seconds (wall clock).
+Threads: 10, MAX: 10
+Finished in 0.00146246 seconds (wall clock).
+Threads: 10, MAX: 100
+Finished in 0.0013164 seconds (wall clock).
+Threads: 10, MAX: 1000
+Finished in 0.00146054 seconds (wall clock).
+Threads: 10, MAX: 10000
+Finished in 0.0268165 seconds (wall clock).
+Threads: 10, MAX: 1000000
+Usage: ./sieve3_openmp T M
+
+  T: number of threads
+  M: max prime
+Threads: 100, MAX: 1
+Finished in 0.0102309 seconds (wall clock).
+Threads: 100, MAX: 10
+Finished in 0.0169541 seconds (wall clock).
+Threads: 100, MAX: 100
+Finished in 0.0161078 seconds (wall clock).
+Threads: 100, MAX: 1000
+Finished in 0.0182039 seconds (wall clock).
+Threads: 100, MAX: 10000
+Finished in 0.0378576 seconds (wall clock).
+Threads: 100, MAX: 1000000
+Usage: ./sieve3_openmp T M
+
+  T: number of threads
+  M: max prime
+Threads: 1000, MAX: 1
+Finished in 0.144702 seconds (wall clock).
+Threads: 1000, MAX: 10
+Finished in 0.143719 seconds (wall clock).
+Threads: 1000, MAX: 100
+Finished in 0.118565 seconds (wall clock).
+Threads: 1000, MAX: 1000
+Finished in 0.130208 seconds (wall clock).
+Threads: 1000, MAX: 10000
+Finished in 0.127055 seconds (wall clock).
+Threads: 1000, MAX: 1000000
+Usage: ./sieve3_openmp T M
+
+  T: number of threads
+  M: max prime
+Threads: 10000, MAX: 1
+Finished in 1.49726 seconds (wall clock).
+Threads: 10000, MAX: 10
+Finished in 1.40076 seconds (wall clock).
+Threads: 10000, MAX: 100
+Finished in 1.2626 seconds (wall clock).
+Threads: 10000, MAX: 1000
+Finished in 1.28338 seconds (wall clock).
+Threads: 10000, MAX: 10000
+Finished in 1.05738 seconds (wall clock).
+Threads: 10000, MAX: 1000000

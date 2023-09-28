@@ -1,0 +1,45 @@
+# openMP_sieve2.cpp 
+The whole range of numbers from 2 to max is parallelized
+
+1. Include OpenMP header:
+   #include <omp.h> 
+
+2. Remove the Posix threads-related code, including `pthread.h` and the `pthread_mutex_t` definitions, since OpenMP provides a simpler way to parallelize code without the need for explicit thread management.
+
+3. Replace the `sieve` function with a parallelized version using OpenMP's `#pragma omp parallel for` directive. In this case, parallelize the outer loop that iterates through numbers in the Sieve of Eratosthenes algorithm mong multiple threads.
+
+4. Additionally, we use `#pragma omp critical` to protect the `primes` vector from concurrent access when adding prime numbers to it.
+
+5.  compile script: chmod +x script1.sh
+    run script: ./script1.sh
+
+
+# openMP_sieve2a.cpp
+primarily parallelize the loops within the `main` function, as the main computation happens there. The first thread will calculate primes from 2 to `sqrt(max)`, and then we will use OpenMP to parallelize the loops to calculate primes from `sqrt(max) + 1` to `max`.
+
+1. Included the OpenMP header (`#include <omp.h>`) to enable OpenMP parallelization.
+
+2. **Replaced Posix Threads with OpenMP**: Removed the Posix thread-related code (`pthread.h` and related functions) as we will use OpenMP for parallelization.
+
+3. **Modified Sieve Function**: Modified the `sieve` function to accept a `start` and `max` parameter to specify the range of numbers to calculate primes for.
+
+4. **Parallelized Loops with OpenMP**: Inside the `main` function, used OpenMP to parallelize the loop that calculates primes from `sqrt(max) + 1` to `max`. We determine the start and end ranges for each thread based on the thread's ID and the total number of threads.
+
+5. **Removed Explicit Thread Creation and Joining**: Removed the explicit thread creation and joining code, as OpenMP handles thread creation and management automatically.
+
+6. **Added Critical Section**: Used `#pragma omp critical` to ensure that the `primes` vector is accessed in a thread-safe manner when adding prime numbers to it.
+
+
+# openmp_sieve3.cpp
+
+1. We retained the `std::queue` for tasks and the `std::vector` for marking numbers as prime.
+
+2. In the main function, we used OpenMP's `#pragma omp parallel` directive to create a parallel region for task generation and processing.
+
+3. Inside the parallel region, we use `#pragma omp for schedule(dynamic)` to parallelize the generation of tasks for numbers up to `sqrt(max)`. OpenMP dynamically distributes the loop iterations among available threads.
+
+4. We added a critical section (`#pragma omp critical`) inside the loop to ensure that only one thread at a time enqueues tasks into the `taskQueue` to avoid data races.
+
+5. The second parallel region is for task processing with a critical section for dequeuing tasks. OpenMP simplifies parallelization by specifying the number of threads and using directives such as #pragma omp parallel to parallelize code sections.OpenMP handles thread creation and management automatically. There's no explicit thread creation or joining.It abstracts away many of the details of thread management and synchronization.
+
+6. The rest of the code, including printing prime numbers and measuring execution time, remains largely unchanged.
