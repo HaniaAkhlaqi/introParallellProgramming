@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <omp.h> // Include OpenMP header
 
+//openMP parallelization for sieve 2 program
 //the whole range of numbers are parallelized from 2 to Max 
 
 using uint = unsigned int;

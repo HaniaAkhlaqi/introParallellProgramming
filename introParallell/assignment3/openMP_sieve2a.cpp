@@ -6,6 +6,8 @@
 #include <chrono>
 #include <omp.h> // Include OpenMP header
 
+//parallelization of sieve 2 program using OPENMP
+//primarily parallelize the loops within the `main` function, as the main computation happens there. The first thread will calculate primes from 2 to `sqrt(max)`, and then we will use OpenMP to parallelize the loops to calculate primes from `sqrt(max) + 1` to `max`.
 
 using uint = unsigned int;
 

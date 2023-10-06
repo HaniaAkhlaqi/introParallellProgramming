@@ -1,0 +1,41 @@
+# parallelize two outer loops in matrix*matrix
+
+1. **Initialization and Setup**:
+   - The code begins by parsing command-line arguments to determine the number of threads to use (`numThreads`) and the size of the matrices (`matrixSize`).
+   - It sets the number of threads for the OpenMP parallel regions using `omp_set_num_threads(numThreads)`.
+   - Memory is allocated for matrices A, B, and C, and matrices A and B are initialized with random values.
+
+2. **Parallel Outer Loops**:
+   - In the `matrixMultiply` function, the first `#pragma omp parallel for` directive parallelizes the initialization of the result matrix `C`. Each thread is responsible for initializing a portion of the matrix. This step is done in parallel to improve performance.
+
+3. **Parallel Matrix Multiplication**:
+   - The second `#pragma omp parallel for` directive parallelizes the actual matrix multiplication operation. Each thread works on a subset of rows from matrix `A` and computes the corresponding rows in matrix `C`. This parallelization distributes the computational load across multiple threads.
+
+
+Comparison with Previous Code:
+- In the previous code, the entire matrix multiplication operation was performed in a single loop, which was not parallelized. This meant that only one thread was performing all the computations.
+
+- In the modified code, OpenMP directives are used to parallelize the outer two loops. This results in multiple threads working on different portions of the computation simultaneously, taking advantage of multi-core processors.
+
+- The use of OpenMP directives simplifies the parallelization process. In the previous code, you would need to manage thread creation, data distribution, and synchronization explicitly using low-level thread APIs like Pthreads. The modified code abstracts these complexities, making it easier to write and maintain.
+
+- The performance of the modified code is significantly better on multi-core systems compared to the previous code because it harnesses the power of parallel processing. However, the actual speedup depends on various factors, including the number of threads, the size of the matrices, and the underlying hardware.
+
+- Parallelizing the initialization of matrix C may not provide significant performance improvement for smaller matrix sizes or when the initialization step is not a significant portion of the overall computation. In such cases, you might choose to parallelize only the matrix multiplication step.
+
+In summary, the modified code leverages OpenMP directives to parallelize the computation, leading to improved performance on multi-core systems while abstracting many of the low-level thread management tasks.
+
+
+
+# parallelize  all three loops in matrix*matrix
+
+Comparison with the Previous Code (Two Outer Loops Parallelized):
+- The primary difference is in the degree of parallelization. In the previous code, only the two outer loops were parallelized, which provided some performance improvement by distributing the work across multiple threads. However, the innermost loop (`k`) remained sequential.
+
+- In the current code, parallelization is extended to all three loops, including the innermost loop (`k`). This results in a higher level of parallelism, potentially leading to even better performance gains on multi-core systems.
+
+- The actual speedup achieved by parallelizing all three loops depends on various factors, including the number of threads, the size of the matrices, and the characteristics of the underlying hardware. In general, when dealing with computationally intensive tasks like matrix multiplication, maximizing parallelism can lead to significant performance improvements.
+
+- It's important to note that parallelization introduces overhead due to thread management, synchronization, and data distribution. Therefore, the speedup may not be linear with the number of threads, and there is an optimal number of threads for a given problem size and hardware configuration.
+
+- The decision to parallelize all loops or only a subset of loops should be based on profiling and benchmarking to determine the most efficient approach for a specific application and hardware platform.
