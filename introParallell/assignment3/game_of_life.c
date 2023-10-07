@@ -131,7 +131,7 @@ int main (int argc, char * argv[]) {
 
 	free_array(current, N);
 	free_array(previous, N);
-	printf("GameOfLife: Size %d Steps %d Time %lf\n", N, T, time);
+	printf("GameOfLife: Size %d Steps %d Time %lf seconds\n", N, T, time);
 	#ifdef OUTPUT
 	system(FINALIZE);
 	#endif

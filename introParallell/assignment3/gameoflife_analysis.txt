@@ -1,0 +1,8 @@
+GameOfLife: Size 1000 Steps 64 Time 0.777689
+Size: 64, Steps: 1000, Threads: 1
+GameOfLife: Size 2000 Steps 64 Time 2.92208
+Size: 64, Steps: 2000, Threads: 1
+GameOfLife: Size 1000 Steps 1024 Time 11.4651
+Size: 1024, Steps: 1000, Threads: 1
+GameOfLife: Size 2000 Steps 1024 Time 49.1337
+Size: 1024, Steps: 2000, Threads: 1

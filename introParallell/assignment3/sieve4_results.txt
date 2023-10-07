@@ -1,0 +1,14 @@
+Prime numbers up to 1000000 computed in 0.0323173 seconds.
+Threads: 1, MAX: 1000000
+Prime numbers up to 1000000 computed in 0.0158372 seconds.
+Threads: 2, MAX: 1000000
+Prime numbers up to 1000000 computed in 0.0122226 seconds.
+Threads: 4, MAX: 1000000
+Prime numbers up to 1000000 computed in 0.0460421 seconds.
+Threads: 8, MAX: 1000000
+Prime numbers up to 1000000 computed in 0.284698 seconds.
+Threads: 16, MAX: 1000000
+Prime numbers up to 1000000 computed in 0.541695 seconds.
+Threads: 32, MAX: 1000000
+Prime numbers up to 1000000 computed in 1.0749 seconds.
+Threads: 64, MAX: 1000000

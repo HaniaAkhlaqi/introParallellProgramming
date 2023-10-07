@@ -121,7 +121,6 @@ int main(int argc, char* argv[]) {
         print_to_pgm(current, N, t + 1);
 #endif
 
-        // Strategy 2: Parallelize Swap Operation
 #pragma omp parallel for private(i, j) shared(current, previous, swap)
         for (i = 0; i < N-1; i++)
             for (j = 0; j < N-1; j++)

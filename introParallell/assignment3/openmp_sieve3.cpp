@@ -55,7 +55,8 @@ int main(int argc, char* argv[]) {
     }
 
     // *** timing begins here ***
-    auto start_time = std::chrono::system_clock::now();
+    //auto start_time = std::chrono::system_clock::now();
+    double start_time = omp_get_wtime();
 
     marked.resize(max + 1, false);
     marked[0] = true;
@@ -111,9 +112,9 @@ int main(int argc, char* argv[]) {
     //     }
     // }
     // Calculate and print the execution time
-    auto end_time = std::chrono::system_clock::now();
-    std::chrono::duration<double> duration = end_time - start_time;
-    std::cout << "Finished in " << duration.count() << " seconds (wall clock)." << std::endl;
+    double duration = omp_get_wtime() - start_time;;
+    printf("Elapsed time for serial: %lf seconds\n", duration);
+
 
     return 0;
 }

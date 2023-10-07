@@ -5,14 +5,15 @@ COMPILER=g++
 FLAGS="-std=c++11 -Wall -fopenmp"
 
 # Set the output file name
-OUTPUT_FILE="sieve3_results.txt"
+OUTPUT_FILE="gameoflife_analysis.txt"
 
 # Define the thread counts and MAX values
-THREADS=("1" "10" "100" "1000" "10000")
-MAX_VALUES=("1" "10" "100" "1000" "10000" "1000000")
+THREADS=("1" "2" "4" "8" "16")
+MAX_VALUES=("64" "1024" "4096")
+STEPS=("1000" "2000")
 
 # Compile the C++ program
-$COMPILER $FLAGS -o sieve3_openmp openmp_sieve3.cpp
+$COMPILER $FLAGS -o openmp_gameoflife_analysis openmp_game_of_life2.cpp
 
 # Check if compilation was successful
 if [ $? -eq 0 ]; then
@@ -24,10 +25,12 @@ fi
 
 # Run the program with different thread counts and MAX values
 for threads in "${THREADS[@]}"; do
-    for max in "${MAX_VALUES[@]}"; do
-        echo "Running with $threads threads and MAX = $max..."
-        ./sieve3_openmp $threads $max >> $OUTPUT_FILE
-        echo "Threads: $threads, MAX: $max" >> $OUTPUT_FILE
+    for size in "${MAX_VALUES[@]}"; do
+        for step in "${STEPS[@]}"; do
+        echo "Running with $threads threads and size = $size and steps $step ..."
+        ./openmp_gameoflife_analysis $step $size $threads >> $OUTPUT_FILE
+        echo "Size: $size, Steps: $step, Threads: $threads" >> $OUTPUT_FILE
+        done
     done
 done
 
